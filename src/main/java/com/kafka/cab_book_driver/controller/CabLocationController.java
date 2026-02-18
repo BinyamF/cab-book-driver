@@ -18,14 +18,14 @@ public class CabLocationController {
     private CabLocationService cabLocationService;
 
     @PutMapping
-    public ResponseEntity updateLocation(){
+    public ResponseEntity<Map<String, String>> updateLocation() throws InterruptedException {
         int range = 100;
-        while(range >0){
-            System.out.printf(Math.random() + "  " + Math.random());
-            range --;
+        while(range > 0){
+            cabLocationService.updateLocation(Math.random() + " , " + Math.random());
+            Thread.sleep(1000);
+            range--;
         }
-        return new ResponseEntity<>(Map.of("message", "Location updated!")
-                , HttpStatus.OK);
+        return new ResponseEntity<>(Map.of("message", "Location updated!"), HttpStatus.OK);
     }
 
 }
