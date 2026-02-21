@@ -1,6 +1,7 @@
 package com.kafka.cab_book_driver.service;
 
 import com.kafka.cab_book_driver.constant.AppConstant;
+import com.kafka.cab_book_driver.entity.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -15,4 +16,9 @@ public class CabLocationService {
         kafkaTemplate.send(AppConstant.CAB_LOCATION, location);
         return true;
     }
+
+    public void saveDestination(Location location){
+        kafkaTemplate.send(AppConstant.CAB_LOCATION, location);
+    }
+
 }
